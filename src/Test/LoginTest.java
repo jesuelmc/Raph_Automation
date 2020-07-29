@@ -6,8 +6,11 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import Pages.HomePage;
+import Pages.LoginPage;
+
 public class LoginTest {
-	String baseUrl = "http://newtours.demoaut.com/mercuryregister.php";
+	String baseUrl = "http://devtisserv.duckdns.org/#/";
 	public WebDriver driver;
 	
 	@BeforeTest
@@ -19,10 +22,13 @@ public class LoginTest {
 	}
 	@Test
 	public void VerifyMessageErrorDisplay() {
-		
+		HomePage hPage = new HomePage(driver);
+		LoginPage lPage = hPage.ini();
+		lPage.llenarCampos("postulante", "12345678");
+		lPage.ingresar();
 	}
 	@AfterTest
 	public void quit() {
-		driver.close();
+		//driver.close();
 	}
 }
